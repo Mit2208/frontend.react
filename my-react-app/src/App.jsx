@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Header from '../public/header/header';
+import FooterPage from '../public/footer/footer';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+import "bootstrap-icons/font/bootstrap-icons.css";
+
 import './App.css';
 
 function App() {
@@ -48,55 +53,71 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Indian Stock Portfolio Tracker</h1>
-      <form onSubmit={addStock}>
-        <input
-          type="text"
-          placeholder="Stock Symbol (e.g., RELIANCE)"
-          value={symbol}
-          onChange={(e) => setSymbol(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Quantity"
-          value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="Purchase Price"
-          value={purchasePrice}
-          onChange={(e) => setPurchasePrice(e.target.value)}
-        />
-        <button type="submit">Add Stock</button>
-      </form>
-
-      <h2>Your Portfolio</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Symbol</th>
-            <th>Quantity</th>
-            <th>Purchase Price</th>
-            <th>Current Price</th>
-            <th>Profit/Loss</th>
-          </tr>
-        </thead>
-        <tbody>
-          {portfolio.map((stock, index) => (
-            <tr key={index}>
-              <td>{stock.symbol}</td>
-              <td>{stock.quantity}</td>
-              <td>₹{stock.purchasePrice}</td>
-              <td>₹{stockData[stock.symbol] || 'Loading...'}</td>
-              <td>{calculateProfitLoss(stock) >= 0 ? '+' : ''}₹{calculateProfitLoss(stock)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <> 
+    <Header/>
+    <div className="d-flex flex-column min-vh-100">
+    <h1 className="text-center mt-5">Welcome to My Website</h1>
     </div>
-  );
-}
+    <main className="flex-grow-1">
+        {/* Your main content goes here */}
+        <div className="container py-4">
+          <h1>Welcome to My App</h1>
+        </div>
+      </main>
 
+    <div className="App">
+    <h1>Indian Stock Portfolio Tracker</h1>
+    <form onSubmit={addStock}>
+      <input
+        type="text"
+        placeholder="Stock Symbol (e.g., RELIANCE)"
+        value={symbol}
+        onChange={(e) => setSymbol(e.target.value)}
+      />
+      <input
+        type="number"
+        placeholder="Quantity"
+        value={quantity}
+        onChange={(e) => setQuantity(e.target.value)}
+      />
+      <input
+        type="number"
+        placeholder="Purchase Price"
+        value={purchasePrice}
+        onChange={(e) => setPurchasePrice(e.target.value)}
+      />
+      <button type="submit">Add Stock</button>
+    </form>
+
+    <h2>Your Portfolio</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Quantity</th>
+          <th>Purchase Price</th>
+          <th>Current Price</th>
+          <th>Profit/Loss</th>
+        </tr>
+      </thead>
+      <tbody>
+        {portfolio.map((stock, index) => (
+          <tr key={index}>
+            <td>{stock.symbol}</td>
+            <td>{stock.quantity}</td>
+            <td>₹{stock.purchasePrice}</td>
+            <td>₹{stockData[stock.symbol] || 'Loading...'}</td>
+            <td>{calculateProfitLoss(stock) >= 0 ? '+' : ''}₹{calculateProfitLoss(stock)}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <FooterPage/>
+
+  </>
+)
+}  
+  
 export default App;
