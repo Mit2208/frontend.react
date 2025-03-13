@@ -8,7 +8,21 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json());const db = mysql.createConnection({
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || 'your_password',
+  database: process.env.DB_NAME || 'your_database'
+});
+
+db.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err);
+    return;
+  }
+  console.log('Connected to MySQL');
+});
+
 
 // Replace with your Alpha Vantage API key
 const API_KEY = process.env.API_KEY;

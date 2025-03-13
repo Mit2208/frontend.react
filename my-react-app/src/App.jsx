@@ -55,13 +55,13 @@ function App() {
   return (
     <> 
     <Header/>
-    <div className="d-flex flex-column min-vh-100">
-    <h1 className="text-center mt-5">Welcome to My Website</h1>
+    <div className="d-flex flex-column">
+    {/* <h1 className="text-center mt-0">Welcome to My Website</h1> */}
     </div>
     <main className="flex-grow-1">
         {/* Your main content goes here */}
-        <div className="container py-4">
-          <h1>Welcome to My App</h1>
+        <div className="container">
+          <h1 className='text-center my-2'>Welcome to My App</h1>
         </div>
       </main>
 
@@ -97,7 +97,11 @@ function App() {
           <th>Quantity</th>
           <th>Purchase Price</th>
           <th>Current Price</th>
-          <th>Profit/Loss</th>
+          <th>Profit/Loss</th>z
+          <th>Action</th>
+          <th>Delete</th>
+          <th>Edit</th>
+          <th>chart</th>
         </tr>
       </thead>
       <tbody>
